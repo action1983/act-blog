@@ -1,0 +1,444 @@
+/* 레트로 픽셀 스타일 CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    background: linear-gradient(45deg, #2a1810, #1a0f0a);
+    color: #f5f5dc;
+    min-height: 100vh;
+    font-size: 8px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #1e1e1e;
+    border: 4px solid #8b4513;
+    box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+}
+
+/* 헤더 */
+.game-header {
+    grid-column: 1 / -1;
+    background: linear-gradient(90deg, #8b4513, #a0522d);
+    padding: 15px;
+    border-bottom: 3px solid #654321;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-title {
+    color: #ffd700;
+    font-size: 12px;
+    text-shadow: 2px 2px 0 #654321;
+}
+
+.book-info {
+    text-align: right;
+}
+
+.book-title {
+    display: block;
+    font-size: 10px;
+    color: #ffe4b5;
+    margin-bottom: 5px;
+}
+
+.author {
+    font-size: 6px;
+    color: #deb887;
+}
+
+/* 메인 게임 영역 */
+.game-screen {
+    background: linear-gradient(135deg, #2f1b14, #1a1a1a);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 캐릭터 영역 */
+.character-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+    background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 50%, #90ee90 100%);
+    position: relative;
+}
+
+.character-display {
+    position: relative;
+    z-index: 10;
+}
+
+.character-sprite {
+    width: 200px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    filter: contrast(1.2) saturate(1.1);
+    transition: all 0.3s ease;
+}
+
+.character-sprite.speaking {
+    filter: contrast(1.3) saturate(1.3) brightness(1.1);
+    transform: scale(1.05);
+}
+
+/* 텍스트 영역 */
+.text-area {
+    min-height: 200px;
+    background: rgba(0, 0, 0, 0.9);
+    border-top: 3px solid #8b4513;
+    position: relative;
+}
+
+.text-box {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border: 3px solid #654321;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 20px;
+    min-height: 120px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.speaker-name {
+    background: linear-gradient(90deg, #8b4513, #a0522d);
+    color: #ffd700;
+    padding: 8px 15px;
+    font-size: 8px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 10px;
+    border: 2px solid #654321;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.text-content {
+    font-size: 9px;
+    line-height: 1.8;
+    color: #f5f5dc;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* 선택지 */
+.choices {
+    margin: 15px;
+}
+
+.choice-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #654321, #8b4513);
+    border: 3px solid #a0522d;
+    color: #ffd700;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-size: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.choice-btn:hover {
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    transform: translateX(5px);
+    box-shadow: -5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* 컨트롤 버튼 */
+.controls {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 2px solid #654321;
+}
+
+.btn {
+    background: linear-gradient(135deg, #654321, #8b4513);
+    border: 2px solid #a0522d;
+    color: #ffd700;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 7px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-shadow: 1px 1px 0 #000;
+    min-width: 60px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.btn-next {
+    flex: 1;
+    background: linear-gradient(135deg, #228b22, #32cd32);
+    border-color: #90ee90;
+}
+
+.btn-next:hover {
+    background: linear-gradient(135deg, #32cd32, #7cfc00);
+}
+
+.btn-small {
+    padding: 8px 12px;
+    font-size: 6px;
+    min-width: auto;
+}
+
+/* 사이드바 */
+.sidebar {
+    background: linear-gradient(135deg, #2a1810, #1a1a1a);
+    border-left: 3px solid #654321;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    margin-bottom: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #654321;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.sidebar-section h3 {
+    color: #ffd700;
+    font-size: 8px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 0 #000;
+    border-bottom: 1px solid #654321;
+    padding-bottom: 8px;
+}
+
+/* 등장인물 목록 */
+.character-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.character-item {
+    background: linear-gradient(135deg, #654321, #8b4513);
+    border: 2px solid #a0522d;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.character-item:hover {
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    transform: translateX(3px);
+}
+
+.character-avatar {
+    width: 30px;
+    height: 30px;
+    background: #deb887;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.character-name {
+    font-size: 6px;
+    color: #ffd700;
+    flex: 1;
+}
+
+.character-status {
+    font-size: 5px;
+    color: #deb887;
+}
+
+/* 진행상황 */
+.progress-info {
+    text-align: center;
+}
+
+.chapter-info {
+    font-size: 7px;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background: #2a2a2a;
+    border: 2px solid #654321;
+    border-radius: 10px;
+    height: 15px;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #228b22, #32cd32);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 6px;
+    color: #deb887;
+}
+
+/* 설정 */
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.settings label {
+    font-size: 6px;
+    color: #deb887;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.settings input[type="range"] {
+    width: 100%;
+    height: 8px;
+    background: #2a2a2a;
+    border-radius: 4px;
+    outline: none;
+}
+
+.settings input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #ffd700;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #654321;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2a1810, #1a1a1a);
+    border: 4px solid #8b4513;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ffe4b5;
+}
+
+.character-profile {
+    text-align: center;
+}
+
+.character-profile img {
+    width: 150px;
+    height: 200px;
+    border: 3px solid #ffd700;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.character-profile h2 {
+    color: #ffd700;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.character-profile p {
+    font-size: 7px;
+    line-height: 1.6;
+    color: #f5f5dc;
+    text-align: left;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .game-container {
+        grid-template-columns: 1fr 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+    
+    .sidebar {
+        grid-row: 3;
+        border-left: none;
+        border-top: 3px solid #654321;
+        max-height: 200px;
+    }
+    
+    .sidebar-section {
+        margin-bottom: 15px;
+    }
+    
+    body {
+        font-size: 6px;
+    }
+}

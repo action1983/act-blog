@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문학 비주얼 노벨 - 오만과 편견</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 헤더 -->
+        <header class="game-header">
+            <h1 class="game-title">📚 문학 비주얼 노벨</h1>
+            <div class="book-info">
+                <span class="book-title">오만과 편견</span>
+                <span class="author">by 제인 오스틴</span>
+            </div>
+        </header>
+
+        <!-- 메인 게임 영역 -->
+        <div class="game-screen">
+            <!-- 캐릭터 영역 -->
+            <div class="character-area">
+                <div class="character-display" id="character-display">
+                    <!-- 캐릭터 이미지가 여기에 표시됩니다 -->
+                </div>
+            </div>
+
+            <!-- 텍스트 박스 영역 -->
+            <div class="text-area">
+                <div class="text-box" id="text-box">
+                    <div class="speaker-name" id="speaker-name"></div>
+                    <div class="text-content" id="text-content">
+                        게임을 시작하려면 아래 버튼을 클릭하세요.
+                    </div>
+                </div>
+                
+                <!-- 선택지 영역 -->
+                <div class="choices" id="choices" style="display: none;">
+                    <!-- 선택지가 여기에 표시됩니다 -->
+                </div>
+            </div>
+
+            <!-- 컨트롤 버튼 -->
+            <div class="controls">
+                <button class="btn btn-next" id="next-btn">다음 ▶</button>
+                <button class="btn btn-auto" id="auto-btn">자동</button>
+                <button class="btn btn-save" id="save-btn">저장</button>
+            </div>
+        </div>
+
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>📋 등장인물</h3>
+                <div class="character-list" id="character-list">
+                    <!-- 등장인물 목록이 여기에 표시됩니다 -->
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>📖 진행상황</h3>
+                <div class="progress-info">
+                    <div class="chapter-info" id="chapter-info">Chapter 1</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">0%</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>⚙️ 설정</h3>
+                <div class="settings">
+                    <label>텍스트 속도: <input type="range" id="text-speed" min="1" max="10" value="5"></label>
+                    <label>자동 진행 속도: <input type="range" id="auto-speed" min="1" max="10" value="3"></label>
+                    <button class="btn btn-small" id="toggle-music">🎵 음악</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 캐릭터 프로필 모달 -->
+    <div class="modal" id="character-modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="character-profile" id="character-profile">
+                <!-- 캐릭터 프로필이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
